@@ -1,13 +1,14 @@
 package com.amit;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Description;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -19,8 +20,7 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages="com.amit")
 @EnableJpaRepositories(basePackages = "com.amit")
 @EnableTransactionManagement
-@Import(SqlConfig.class)
-public class SpringConfig extends WebMvcConfigurerAdapter {
+public class SpringConfig  {
 
 
     @Bean(name={"jsonRestTemplate","restTemplate"})
@@ -33,17 +33,17 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     @Description("view resolver for admin panel")
-    public InternalResourceViewResolver viewResolver(){
+    public ViewResolver viewResolver(){
         InternalResourceViewResolver viewResolver=new InternalResourceViewResolver();
       //  viewResolver.setAlwaysInclude(true);
        // viewResolver.setOrder(0);
         viewResolver.setViewClass(JstlView.class);
-        viewResolver.setPrefix("/WEB-INF/jsp/");
+        viewResolver.setPrefix("/WEB-INF/views/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
-    @Override
-    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-    }
+//    @Override
+//    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+//        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+//    }
 }
