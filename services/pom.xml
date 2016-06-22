@@ -14,6 +14,7 @@
         <module>couch-db</module>
         <module>kafka-q</module>
         <module>redis-q</module>
+        <module>rx-java</module>
     </modules>
     <dependencies>
         <dependency>
