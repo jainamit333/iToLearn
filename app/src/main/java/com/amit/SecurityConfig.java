@@ -1,29 +1,32 @@
 package com.amit;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
 /**
  * Created by amit on 2/6/16.
  */
-public class SecurityConfig{}
-//@EnableWebSecurity
-//@Configuration
-//@Import(SqlConfig.class)
-//public class SecurityConfig extends WebSecurityConfigurerAdapter{
-//
-//    @Autowired
-//    DataSource dataSource;
-//
-//    @Autowired
-//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
-//
-//        auth.jdbcAuthentication().dataSource(dataSource)
-//                .usersByUsernameQuery("select user_name , password from users where user_name = ?")
-//                .authoritiesByUsernameQuery("select user_name , password from users where user_name = ?");
-//    }
-//
-//    @Override
-//    protected void configure(HttpSecurity security) throws Exception{
-//        security.authorizeRequests().antMatchers("/*").access("hasRole('ROLE_ADMIN)").anyRequest().permitAll()
-//                .and().formLogin().loginPage("/login").usernameParameter("username").passwordParameter("password")
-//                .and().logout().logoutSuccessUrl("/login?logout").and().exceptionHandling().accessDeniedPage("/403").and().csrf();
-//    }
-//}
+import javax.sql.DataSource;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    DataSource dataSource;
+
+    @Autowired
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
+
+        auth.jdbcAuthentication().dataSource(dataSource)
+                .usersByUsernameQuery("select email_id , password ,enabled from users where email_id = ?")
+                .authoritiesByUsernameQuery("select email_id , password from users where email_id = ?");
+    }
+
+
+}

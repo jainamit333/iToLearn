@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by amit on 9/6/16.
  */
@@ -18,4 +21,10 @@ public class ViewController {
         modelMap.addAttribute("greeting","greeting message");
         return "index";
     }
+
+    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    public String login(){
+        return "login";
+    }
+
 }

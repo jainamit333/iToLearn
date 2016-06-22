@@ -7,6 +7,9 @@
     <title>HelloWorld page</title>
 </head>
 <body>
+<button class="btn-sm btn">Add Social</button>
+<script type="application/javascript" src=""
+<script src="webjars/app/0.0.1-SNAPSHOT/app-bundle.js"></script>
 Greeting : ${greeting}
 </body>
 </html>

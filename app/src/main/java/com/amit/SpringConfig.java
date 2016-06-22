@@ -1,14 +1,13 @@
 package com.amit;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Description;
+import org.springframework.context.annotation.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -20,7 +19,8 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages="com.amit")
 @EnableJpaRepositories(basePackages = "com.amit")
 @EnableTransactionManagement
-public class SpringConfig  {
+@Import(SecurityConfig.class)
+public class SpringConfig  extends WebMvcConfigurerAdapter {
 
 
     @Bean(name={"jsonRestTemplate","restTemplate"})
@@ -42,8 +42,16 @@ public class SpringConfig  {
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
-//    @Override
-//    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-//    }
+    private static final String[] CLASSPATH_RESOURCE_LOCATIONS = { "classpath:/public/" };
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        super.addResourceHandlers(registry);
+        if (!registry.hasMappingForPattern("/webjars/**")) {
+            registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+        }
+        if (!registry.hasMappingForPattern("/**")) {
+            registry.addResourceHandler("/**").addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
+        }
+    }
 }

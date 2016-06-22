@@ -4,36 +4,44 @@ package com.amit.impl.entity;
 import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.io.StreamCorruptedException;
+import java.util.List;
 
 /**
  * Created by amit on 2/6/16.
  */
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Data
 public class Users implements Serializable{
 
     @Id
     @GeneratedValue
-    public Integer id;
+    private Integer id;
 
     @Column(name = "user_name")
-    public String userName;
+    @PrimaryKeyJoinColumn
+    private String userName;
+
+    @Column
+    private String password;
 
     @Column(name = "first_name")
-    public String firstName;
+    private String firstName;
 
     @Column(name = "middle_name")
-    public String middleName;
+    private String middleName;
 
     @Column(name = "last_name")
-    public String lastName;
+    private String lastName;
 
     @Column(name = "email_id")
-    public String emailId;
+    private String emailId;
 
     @Column(name = "phone_number")
-    public String phoneNumber;
+    private String phoneNumber;
 
+    @Column(name = "enabled")
+    private Boolean enables;
 
 }

@@ -20,8 +20,7 @@ public class SqlController {
     @RequestMapping("/add")
     public String addNewUser(){
 
-        Users users
-                 = new Users();
+        Users users = new Users();
         users.setFirstName("Amit");
         users.setEmailId("jainamit333@gmail.com");
         users.setLastName("Jain");
