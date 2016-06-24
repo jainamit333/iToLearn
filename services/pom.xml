@@ -15,8 +15,7 @@
         <module>kafka-q</module>
         <module>redis-q</module>
         <module>rx-java</module>
+        <module>micro-bird-view</module>
+        <module>webster</module>
     </modules>
-
-
-
 </project>
