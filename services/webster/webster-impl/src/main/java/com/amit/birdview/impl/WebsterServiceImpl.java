@@ -5,9 +5,9 @@ import com.amit.couch.api.CouchDocument;
 import com.amit.couch.api.CouchService;
 
 
+import com.amit.impl.entity.WebsterLog;
 import com.amit.webster.api.WebPageStat;
 import com.amit.webster.api.WebPageUserStat;
-import com.amit.webster.api.Webpage;
 import com.amit.webster.api.WebsterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,13 +21,19 @@ public class WebsterServiceImpl implements WebsterService {
     @Autowired
     CouchService couchBaseService;
 
+    @Autowired
+    com.amit.service.WebsterService websterService;
+
     public void addUserStat(String userId, WebPageUserStat.WebPageUserStats webPageStats) {
 
         CouchDocument couchDocument = new CouchDocument<WebPageUserStat.WebPageUserStats>();
         couchDocument.setId("WEBVIEW-"+"USERSTAT-"+userId+"-"+webPageStats.getCompleteUrl());
         couchDocument.setDocument(webPageStats);
         couchBaseService.add(couchDocument);
-
+        WebsterLog websterLog = new WebsterLog();
+        websterLog.setUserId(userId);websterLog.setKey("WEBVIEW-"+"USERSTAT-"+userId+"-"+webPageStats.getCompleteUrl());
+        websterLog.setWebpage(webPageStats.getCompleteUrl());
+        websterService.add(websterLog);
     }
 
     public void addWebPageStat(WebPageStat.WebPageStats webPageStats) {

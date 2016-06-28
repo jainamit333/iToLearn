@@ -17,5 +17,6 @@
         <module>rx-java</module>
         <module>micro-bird-view</module>
         <module>webster</module>
+        <module>lambda</module>
     </modules>
 </project>

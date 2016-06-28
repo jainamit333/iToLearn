@@ -10,4 +10,5 @@ public interface WebsterService {
     void updateUserStat(String userId, WebPageUserStat.WebPageUserStats webPageStats);
     WebPageUserStat.WebPageUserStats getUserStatForWebpage(String userId, String webpage);
     WebPageStat.WebPageStats getWebPageStat(String webpage);
+
 }

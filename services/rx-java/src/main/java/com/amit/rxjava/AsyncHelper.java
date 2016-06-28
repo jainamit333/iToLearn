@@ -184,6 +184,7 @@ public class AsyncHelper {
 
             }).subscribeOn(Schedulers.io());
 
+
         List<Entity> entityList = entityObservable.toList().toBlocking().single();
 
         System.out.println(entityList);
