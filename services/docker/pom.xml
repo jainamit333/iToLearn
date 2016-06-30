@@ -9,12 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>webster</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>webster-api</module>
-
-    </modules>
+    <artifactId>docker</artifactId>
 
 
 </project>

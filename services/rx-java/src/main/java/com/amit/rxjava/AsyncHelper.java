@@ -1,6 +1,5 @@
 package com.amit.rxjava;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
 import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Func1;
@@ -73,9 +72,11 @@ public class AsyncHelper {
     }
 
     private Observable<Integer> getDataSync(int i) {
+        System.out.println(i);
         return Observable.create((Subscriber<? super Integer> s) -> {
             // simulate latency
             try {
+
                 Thread.sleep(1000);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -143,7 +144,7 @@ public class AsyncHelper {
 
         AsyncHelper asyncHelper = new AsyncHelper();
      //   System.out.println(new Random(100).nextInt());
-        asyncHelper.start();
+        asyncHelper.zipOperatorEvaluator();
 
 
     }
@@ -195,8 +196,9 @@ public class AsyncHelper {
     private Observable<Entity> getEntityObservable(){
         return Observable.from(entities).flatMap(entity -> Observable.create((Subscriber<? super Entity> a) -> {
             // simulate latency
+
             try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -214,5 +216,24 @@ public class AsyncHelper {
     public Observable<Boolean> getRandomBoolean(){
         Random random = new Random();
         return Observable.just(random.nextBoolean()).subscribeOn(Schedulers.io());
+    }
+
+    public void zipOperatorEvaluator(){
+        System.out.println("start me");
+        Observable<Integer> first = getDataSync(1);
+        Observable<Integer> second = getDataSync(2);
+        Observable<Integer> third = getDataSync(3);
+        Observable<Integer> forth = getDataSync(4);
+        System.out.println("end me");
+
+          Observable.zip(first,second,third,(a,b,c)->{
+              System.out.printf("inside zip");
+            System.out.println(a);
+             System.out.println(b);
+             System.out.println(c);
+             //System.out.println(d);
+            return null;
+        });
+
     }
 }

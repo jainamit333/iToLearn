@@ -26,38 +26,38 @@ import javax.sql.DataSource;
 /**
  * Created by amit on 19/6/16.
  */
-@EnableSocial
-@Configuration
-@Import(SpringConfig.class)
-public class SpringSocialSecurity implements SocialConfigurer {
+//@EnableSocial
+//@Configuration
+//@Import(SpringConfig.class)
+public class SpringSocialSecurity {//implements SocialConfigurer {
 
 
-    @Autowired
-    DataSource dataSource;
-
-    @Bean
-    public ConnectController connectController(
-            ConnectionFactoryLocator connectionFactoryLocator,
-            ConnectionRepository connectionRepository) {
-        return new ConnectController(connectionFactoryLocator, connectionRepository);
-    }
-
-    @Override
-    public void addConnectionFactories(ConnectionFactoryConfigurer connFact, Environment env) {
-            connFact.addConnectionFactory(new FacebookConnectionFactory(env.getProperty("fb.api-key"),env.getProperty("fb.api-secret")));
-            connFact.addConnectionFactory(new GoogleConnectionFactory(env.getProperty("google.app-key"),env.getProperty("google.app-secret")));
-            connFact.addConnectionFactory(new TwitterConnectionFactory(env.getProperty("twitter.client-id"),env.getProperty("twitter.client-secret")));
-            connFact.addConnectionFactory(new LinkedInConnectionFactory(env.getProperty("linkendin.api-key"),env.getProperty("linkendin.api-secret")));
-
-    }
-
-    @Override
-    public UserIdSource getUserIdSource() {
-        return new AuthenticationNameUserIdSource();
-    }
-
-    @Override
-    public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
-        return new JdbcUsersConnectionRepository(dataSource, connectionFactoryLocator, Encryptors.noOpText());
-    }
+//    @Autowired
+//    DataSource dataSource;
+//
+//    @Bean
+//    public ConnectController connectController(
+//            ConnectionFactoryLocator connectionFactoryLocator,
+//            ConnectionRepository connectionRepository) {
+//        return new ConnectController(connectionFactoryLocator, connectionRepository);
+//    }
+//
+//    @Override
+//    public void addConnectionFactories(ConnectionFactoryConfigurer connFact, Environment env) {
+//            connFact.addConnectionFactory(new FacebookConnectionFactory(env.getProperty("fb.api-key"),env.getProperty("fb.api-secret")));
+//            connFact.addConnectionFactory(new GoogleConnectionFactory(env.getProperty("google.app-key"),env.getProperty("google.app-secret")));
+//            connFact.addConnectionFactory(new TwitterConnectionFactory(env.getProperty("twitter.client-id"),env.getProperty("twitter.client-secret")));
+//            connFact.addConnectionFactory(new LinkedInConnectionFactory(env.getProperty("linkendin.api-key"),env.getProperty("linkendin.api-secret")));
+//
+//    }
+//
+//    @Override
+//    public UserIdSource getUserIdSource() {
+//        return new AuthenticationNameUserIdSource();
+//    }
+//
+//    @Override
+//    public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
+//        return new JdbcUsersConnectionRepository(dataSource, connectionFactoryLocator, Encryptors.noOpText());
+//    }
 }

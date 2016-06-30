@@ -17,5 +17,5 @@ public interface WebsterRepository extends CrudRepository<WebsterLog,String> {
 
     long countByUserId(String userId);
 
-    long countByWebPage(String webPage);
+    long countByWebpage(String webpage);
 }

@@ -18,5 +18,12 @@
         <module>micro-bird-view</module>
         <module>webster</module>
         <module>lambda</module>
+        <module>algorithms</module>
+        <module>reimann</module>
+        <module>metrics</module>
+        <module>owner</module>
+        <module>rabbit</module>
+        <module>slack</module>
+        <module>docker</module>
     </modules>
 </project>

@@ -2,20 +2,17 @@ package com.amit.impl.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by amit on 28/6/16.
  */
 @Entity
+@Table
 @Data
 public class WebsterLog {
 
     @javax.persistence.Id
-    @GeneratedValue
     private int Id;
 
     @Column(name = "user_id")
