@@ -19,8 +19,12 @@ public class CouchServiceImpl implements CouchService<CouchDocument> {
     }
 
 
-    public CouchDocument get(String key) {
-        return couchRepository.findOne(key);
+    public Object get(String key) {
+        CouchDocument couchDocument =  couchRepository.findOne(key);
+        if(couchDocument!=null){
+            return couchRepository.findOne(key).getDocument();
+        }
+        return null;
     }
 
 

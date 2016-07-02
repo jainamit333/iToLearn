@@ -29,7 +29,7 @@ public class CouchBaseConfig extends AbstractCouchbaseConfiguration implements T
 
     @Override
     protected String getBucketName() {
-        return "mmt-bucket";
+        return "default";
     }
 
     @Override

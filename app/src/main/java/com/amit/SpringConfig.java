@@ -59,7 +59,7 @@ public class SpringConfig  extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    private ReimannRegistry reimannRegistry() throws IOException {
+    public ReimannRegistry reimannRegistry() throws IOException {
         return new ReimannRegistry("0.0.0.0",5555);
     };
 }

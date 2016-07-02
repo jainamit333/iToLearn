@@ -8,20 +8,21 @@ import javax.persistence.*;
  * Created by amit on 28/6/16.
  */
 @Entity
-@Table
+//@Table(name = "websterLog")
 @Data
 public class WebsterLog {
 
-    @javax.persistence.Id
-    private int Id;
+    @Id
+    @GeneratedValue
+    private Integer id;
 
-    @Column(name = "user_id")
+    @Column
     private String userId;
 
-    @Column(name = "web_page")
+    @Column
     private String webpage;
 
-    @Column(name = "key")
-    private String key;
+    @Column
+    private String couchKey;
 
 }

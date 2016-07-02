@@ -56,16 +56,17 @@ public class WebsterController {
             coreWebsterService.updateUserStat(webPageUserStats.getUserId(),webPageUserStats);
             return "SUCCESS";
         }catch (Exception e){
+            e.printStackTrace();
             return "FAIL";
         }
     }
-    @RequestMapping(value = "/webpage/userstat",method = RequestMethod.GET)
-    public String getUserWebpageData(@RequestParam String userid,@RequestParam String webpage){
+    @RequestMapping(value = "/webpage/userstat/{userId}",method = RequestMethod.GET)
+    public String getUserWebpageData(@PathVariable String userid,@RequestParam(value = "url") String webpage) throws TextFormat.ParseException {
         return coreWebsterService.getUserStatForWebpage(userid,webpage).toString();
     }
 
-    @RequestMapping(value = "/webpage/stat",method = RequestMethod.GET)
-    public String getWebpageData(@RequestParam String webpage){
+    @RequestMapping(value = "/webpage/stat",method = RequestMethod.POST)
+    public String getWebpageData(@RequestParam String webpage) throws TextFormat.ParseException {
         return coreWebsterService.getWebPageStat(webpage).toString();
     }
 

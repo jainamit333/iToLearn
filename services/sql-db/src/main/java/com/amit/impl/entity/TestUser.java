@@ -1,18 +1,18 @@
 package com.amit.impl.entity;
 
-
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * Created by amit on 2/6/16.
+ * Created by amit on 1/7/16.
  */
+
 @Entity
 @Table(name = "users")
 @Data
-public class Users implements Serializable{
+public class TestUser implements Serializable {
 
     @Id
     @GeneratedValue

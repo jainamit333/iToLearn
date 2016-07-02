@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * Created by amit on 30/6/16.
  */
-@Component
+
 public class ReimannRegistry {
 
     RiemannClient riemannClient;
