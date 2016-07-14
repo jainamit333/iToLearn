@@ -5,6 +5,8 @@ import com.amit.couch.api.CouchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by amit on 23/6/16.
  */
@@ -30,6 +32,13 @@ public class CouchServiceImpl implements CouchService<CouchDocument> {
 
     public void delete(String key) {
         couchRepository.delete(key);
+    }
+
+    public List<CouchDocument> getFromDocument(int i){
+        return couchRepository.findByReferenceId(i);
+    }
+    public void deleteFromDocument(int i){
+        couchRepository.deleteByReferenceId(i);
     }
 
 }

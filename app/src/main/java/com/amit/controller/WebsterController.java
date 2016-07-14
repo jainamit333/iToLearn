@@ -34,6 +34,8 @@ public class WebsterController {
                 .build().toString();
     }
 
+
+
     @RequestMapping(value = "webpage/userstat",method = RequestMethod.POST)
     public String postUserWebpageData(@RequestBody String value) throws InvalidProtocolBufferException, TextFormat.ParseException {
         try{
@@ -60,9 +62,11 @@ public class WebsterController {
             return "FAIL";
         }
     }
-    @RequestMapping(value = "/webpage/userstat/{userId}",method = RequestMethod.GET)
-    public String getUserWebpageData(@PathVariable String userid,@RequestParam(value = "url") String webpage) throws TextFormat.ParseException {
-        return coreWebsterService.getUserStatForWebpage(userid,webpage).toString();
+
+
+    @RequestMapping(value = "/webpage/userstat/{userId}",method = RequestMethod.POST)
+    public String getUserWebpageData(@PathVariable String userId,@RequestBody String webpage) throws TextFormat.ParseException {
+        return coreWebsterService.getUserStatForWebpage(userId,webpage).toString();
     }
 
     @RequestMapping(value = "/webpage/stat",method = RequestMethod.POST)
@@ -70,8 +74,9 @@ public class WebsterController {
         return coreWebsterService.getWebPageStat(webpage).toString();
     }
 
-    @RequestMapping(value = "/userStat",method = RequestMethod.GET)
+    @RequestMapping(value = "/userStat",method = RequestMethod.POST)
     public long getUserData(@RequestParam String userId){
+
         return coreWebsterService.getUserStat(userId);
     }
 

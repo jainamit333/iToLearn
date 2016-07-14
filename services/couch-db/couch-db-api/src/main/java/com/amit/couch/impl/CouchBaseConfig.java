@@ -24,7 +24,7 @@ public class CouchBaseConfig extends AbstractCouchbaseConfiguration implements T
     @Override
     protected List<String> getBootstrapHosts() {
 
-        return Collections.singletonList("0.0.0.0");
+        return Collections.singletonList("172.16.25.108");
     }
 
     @Override

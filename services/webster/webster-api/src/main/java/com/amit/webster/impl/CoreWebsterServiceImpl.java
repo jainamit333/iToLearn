@@ -90,13 +90,19 @@ public class CoreWebsterServiceImpl implements CoreWebsterService {
 
     public WebPageUserStat.WebPageUserStats getUserStatForWebpage(String userId, String webpage) throws TextFormat.ParseException {
 
-        String data = (String)couchBaseService.get("WEBVIEW-"+"USERSTAT-"+userId+"-"+webpage);
-        WebPageUserStat.WebPageUserStats.Builder builder = WebPageUserStat.WebPageUserStats.newBuilder();
-        if(data!=null){
-            TextFormat.getParser().merge(data,builder);
+        try{
+            String data = (String)couchBaseService.get("WEBVIEW-"+"USERSTAT-"+userId+"-"+webpage);
+            WebPageUserStat.WebPageUserStats.Builder builder = WebPageUserStat.WebPageUserStats.newBuilder();
+            if(data!=null){
+                TextFormat.getParser().merge(data,builder);
+            }
+
+            return builder.build();
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
         }
 
-        return builder.build();
     }
 
     public WebPageStat.WebPageStats getWebPageStat(String webpage) throws TextFormat.ParseException {

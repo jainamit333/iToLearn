@@ -25,5 +25,7 @@
         <module>rabbit</module>
         <module>slack</module>
         <module>docker</module>
+        <module>google</module>
+        <module>tastekit</module>
     </modules>
 </project>
