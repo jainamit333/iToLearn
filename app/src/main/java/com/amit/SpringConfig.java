@@ -1,5 +1,6 @@
 package com.amit;
 
+import com.amit.service.reimann.ReimannRegistry;
 import org.springframework.context.annotation.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -10,13 +11,15 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import java.io.IOException;
 
 /**
  * Created by amit on 2/6/16.
  */
+
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages="com.amit")
+@ComponentScan(basePackages={"com.amit","com.amit.webster"})
 @EnableJpaRepositories(basePackages = "com.amit")
 @EnableTransactionManagement
 @Import(SecurityConfig.class)
@@ -54,4 +57,9 @@ public class SpringConfig  extends WebMvcConfigurerAdapter {
             registry.addResourceHandler("/**").addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
         }
     }
+
+    @Bean
+    public ReimannRegistry reimannRegistry() throws IOException {
+        return new ReimannRegistry("0.0.0.0",5555);
+    };
 }

@@ -1,6 +1,6 @@
 package com.amit.birdview.api;
 
-import com.amit.birdview.impl.pojo.Server;
+import com.amit.webster.impl.pojo.Server;
 
 import java.util.List;
 

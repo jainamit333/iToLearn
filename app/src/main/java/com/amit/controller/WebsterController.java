@@ -1,9 +1,14 @@
 package com.amit.controller;
 
-import com.amit.webster.api.WebPageUserStat;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+
+import com.amit.webster.WebPageUserStat;
+import com.amit.webster.CoreWebsterService;
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.TextFormat;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.ws.rs.Produces;
 
 /**
  * Created by amit on 24/6/16.
@@ -12,6 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/webster")
 public class WebsterController {
 
+    @Autowired
+    private CoreWebsterService coreWebsterService;
+
+    @Produces("application/x-protobuf")
     @RequestMapping(value = "test",method = RequestMethod.GET)
     public String testWebster(){
         return WebPageUserStat.WebPageUserStats.newBuilder().setBaseUrl("developers.google.com")
@@ -24,4 +33,51 @@ public class WebsterController {
                 .addTag(WebPageUserStat.WebPageUserStats.Tags.newBuilder().setTag("TAG 2").build())
                 .build().toString();
     }
+
+
+
+    @RequestMapping(value = "webpage/userstat",method = RequestMethod.POST)
+    public String postUserWebpageData(@RequestBody String value) throws InvalidProtocolBufferException, TextFormat.ParseException {
+        try{
+            WebPageUserStat.WebPageUserStats.Builder builder = WebPageUserStat.WebPageUserStats.newBuilder();
+            TextFormat.getParser().merge(value,builder);
+            WebPageUserStat.WebPageUserStats webPageUserStats = builder.build();
+            coreWebsterService.addUserStat(webPageUserStats.getUserId(),webPageUserStats);
+            return "SUCCESS";
+        }catch (Exception e){
+            return "FAIL";
+        }
+    }
+
+    @RequestMapping(value = "/webpage/userstat",method = RequestMethod.PUT)
+    public String putUserWebpageData(@RequestBody String value){
+        try{
+            WebPageUserStat.WebPageUserStats.Builder builder = WebPageUserStat.WebPageUserStats.newBuilder();
+            TextFormat.getParser().merge(value,builder);
+            WebPageUserStat.WebPageUserStats webPageUserStats = builder.build();
+            coreWebsterService.updateUserStat(webPageUserStats.getUserId(),webPageUserStats);
+            return "SUCCESS";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "FAIL";
+        }
+    }
+
+
+    @RequestMapping(value = "/webpage/userstat/{userId}",method = RequestMethod.POST)
+    public String getUserWebpageData(@PathVariable String userId,@RequestBody String webpage) throws TextFormat.ParseException {
+        return coreWebsterService.getUserStatForWebpage(userId,webpage).toString();
+    }
+
+    @RequestMapping(value = "/webpage/stat",method = RequestMethod.POST)
+    public String getWebpageData(@RequestParam String webpage) throws TextFormat.ParseException {
+        return coreWebsterService.getWebPageStat(webpage).toString();
+    }
+
+    @RequestMapping(value = "/userStat",method = RequestMethod.POST)
+    public long getUserData(@RequestParam String userId){
+
+        return coreWebsterService.getUserStat(userId);
+    }
+
 }

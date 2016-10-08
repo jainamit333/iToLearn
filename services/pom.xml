@@ -17,7 +17,20 @@
         <module>rx-java</module>
         <module>micro-bird-view</module>
         <module>webster</module>
+
         <module>byte-buddy</module>
         <module>nomin</module>
+
+        <module>lambda</module>
+        <module>algorithms</module>
+        <module>reimann</module>
+        <module>metrics</module>
+        <module>owner</module>
+        <module>rabbit</module>
+        <module>slack</module>
+        <module>docker</module>
+        <module>google</module>
+        <module>tastekit</module>
+
     </modules>
 </project>

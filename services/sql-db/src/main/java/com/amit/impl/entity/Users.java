@@ -2,10 +2,9 @@ package com.amit.impl.entity;
 
 
 import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.io.StreamCorruptedException;
-import java.util.List;
 
 /**
  * Created by amit on 2/6/16.

@@ -13,7 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>couch-db-api</module>
-        <module>couch-db-impl</module>
     </modules>
 
     <dependencies>

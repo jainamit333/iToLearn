@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>webster-api</module>
-        <module>webster-impl</module>
+
     </modules>
 
 

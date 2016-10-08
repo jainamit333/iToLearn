@@ -33,6 +33,7 @@ import javax.sql.DataSource;
 /**
  * Created by amit on 19/6/16.
  */
+
 @EnableSocial
 @Configuration
 @Import(SpringConfig.class)
@@ -58,10 +59,7 @@ public class SpringSocialSecurity  implements SocialConfigurer {
 
     }
 
-//    @Override
-//    public UserIdSource getUserIdSource() {
-//        return new AuthenticationNameUserIdSource();
-//    }
+
 
     @Override
     public UserIdSource getUserIdSource() {
@@ -119,6 +117,5 @@ public class SpringSocialSecurity  implements SocialConfigurer {
     public ReconnectFilter apiExceptionHandler(UsersConnectionRepository usersConnectionRepository, UserIdSource userIdSource) {
         return new ReconnectFilter(usersConnectionRepository, userIdSource);
     }
-
 
 }

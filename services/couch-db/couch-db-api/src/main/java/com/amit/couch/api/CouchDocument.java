@@ -27,6 +27,17 @@ public class CouchDocument<T> {
     @Field
     private Map<String,Object> metaData;
 
+    @Field
+    private int referenceId;
+
+    public int getReferenceId() {
+        return referenceId;
+    }
+
+    public void setReferenceId(int referenceId) {
+        this.referenceId = referenceId;
+    }
+
     public DateTime getCreatedAt() {
         return createdAt;
     }
