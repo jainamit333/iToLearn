@@ -17,5 +17,7 @@
         <module>rx-java</module>
         <module>micro-bird-view</module>
         <module>webster</module>
+        <module>byte-buddy</module>
+        <module>nomin</module>
     </modules>
 </project>

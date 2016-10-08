@@ -16,17 +16,17 @@ import java.util.Random;
  */
 public class AsyncHelper {
 
-    Entity entity1 = new Entity("1","name1","1","1");
-    Entity entity2 = new Entity("2","name2","1","2");
-    Entity entity3 = new Entity("3","name3","1","3");
-    Entity entity4 = new Entity("4","name4","2","4");
-    Entity entity5 = new Entity("5","name5","2","1");
-    Entity entity6 = new Entity("6","name6","3","5");
+    Entity entity1 = new Entity("1", "name1", "1", "1");
+    Entity entity2 = new Entity("2", "name2", "1", "2");
+    Entity entity3 = new Entity("3", "name3", "1", "3");
+    Entity entity4 = new Entity("4", "name4", "2", "4");
+    Entity entity5 = new Entity("5", "name5", "2", "1");
+    Entity entity6 = new Entity("6", "name6", "3", "5");
 
-        List<Entity> entities = new ArrayList<>();
+    List<Entity> entities = new ArrayList<>();
 
 
-    public Observable<String> getObservable(String s){
+    public Observable<String> getObservable(String s) {
         return Observable.create((Subscriber<? super String> a) -> {
             // simulate latency
             try {
@@ -38,29 +38,39 @@ public class AsyncHelper {
             a.onCompleted();
         });
     }
-    public Observable<String> getObservableAsync(String s){
+
+    public Observable<String> getObservableAsync(String s) {
         return getObservable(s).subscribeOn(Schedulers.io());
     }
 
-    public Observable<String> getListAsync(){
+    public Observable<String> getListAsync() {
 
         List<String> stringList = new ArrayList();
-        stringList.add("1");stringList.add("2");stringList.add("3");
-        stringList.add("4");stringList.add("5");stringList.add("6");
+        stringList.add("1");
+        stringList.add("2");
+        stringList.add("3");
+        stringList.add("4");
+        stringList.add("5");
+        stringList.add("6");
         stringList.add("7");
-        return  Observable.from(stringList).flatMap(new Func1<String, Observable<String>>() {
+        return Observable.from(stringList).flatMap(new Func1<String, Observable<String>>() {
             @Override
             public Observable<String> call(String s) {
                 return getObservableAsync(s);
             }
         });
     }
-    public Observable<String> getListSync(){
+
+    public Observable<String> getListSync() {
         List<String> stringList = new ArrayList();
-        stringList.add("1");stringList.add("2");stringList.add("3");
-        stringList.add("4");stringList.add("5");stringList.add("6");
+        stringList.add("1");
+        stringList.add("2");
+        stringList.add("3");
+        stringList.add("4");
+        stringList.add("5");
+        stringList.add("6");
         stringList.add("7");
-        return  Observable.from(stringList).flatMap(new Func1<String, Observable<String>>() {
+        return Observable.from(stringList).flatMap(new Func1<String, Observable<String>>() {
             @Override
             public Observable<String> call(String s) {
                 return getObservable(s);
@@ -85,56 +95,57 @@ public class AsyncHelper {
         });
     }
 
-    private  void mergingAsync() {
+    private void mergingAsync() {
         Observable.merge(getDataAsync(1), getDataAsync(2)).toBlocking().forEach(System.out::println);
     }
 
 
-    public Observable<EntityStat> getEntityStat(String id){
+    public Observable<EntityStat> getEntityStat(String id) {
 
         Observable<Integer> likes = getRandomNumber();
         Observable<Integer> follows = getRandomNumber();
         Observable<Integer> shared = getRandomNumber();
         Observable<Integer> comment = getRandomNumber();
-        return Observable.zip(likes,follows,shared,comment,(a,b,c,d)->{
-            return new EntityStat(a,b,c,d);
+        return Observable.zip(likes, follows, shared, comment, (a, b, c, d) -> {
+            return new EntityStat(a, b, c, d);
         });
 
     }
 
-    public Observable<UserStat> getUserStat(String id){
+    public Observable<UserStat> getUserStat(String id) {
         Observable<Boolean> likes = getRandomBoolean();
         Observable<Boolean> follows = getRandomBoolean();
         Observable<Boolean> shared = getRandomBoolean();
 
-        return Observable.zip(likes,follows,shared,(a,b,c)->{
-            return new UserStat(a,b,c);
+        return Observable.zip(likes, follows, shared, (a, b, c) -> {
+            return new UserStat(a, b, c);
         });
     }
 
-    public Observable<Tags> getTags(String id){
-            return Observable.just(new Tags(id)).subscribeOn(Schedulers.io()) ;
+    public Observable<Tags> getTags(String id) {
+        return Observable.just(new Tags(id)).subscribeOn(Schedulers.io());
     }
 
-    public Observable<Comments> getComments(String id){
-        return Observable.just(new Comments(id)).subscribeOn(Schedulers.io()) ;
+    public Observable<Comments> getComments(String id) {
+        return Observable.just(new Comments(id)).subscribeOn(Schedulers.io());
     }
 
-    public Observable<User> getUser(String id){
-        return Observable.just(new User(id,"name"+id)).subscribeOn(Schedulers.io());
+    public Observable<User> getUser(String id) {
+        return Observable.just(new User(id, "name" + id)).subscribeOn(Schedulers.io());
     }
 
-    public Observable<String> getPoster(String id){
-        return Observable.just("name"+id).subscribeOn(Schedulers.io());
+    public Observable<String> getPoster(String id) {
+        return Observable.just("name" + id).subscribeOn(Schedulers.io());
     }
 
-    public void printListSync(){
-        getListSync().toBlocking().forEach(a->{
+    public void printListSync() {
+        getListSync().toBlocking().forEach(a -> {
             System.out.println(a);
         });
     }
-    public void printListAsync(){
-        getListAsync().toBlocking().forEach(a->{
+
+    public void printListAsync() {
+        getListAsync().toBlocking().forEach(a -> {
             System.out.println(a);
         });
     }
@@ -142,47 +153,50 @@ public class AsyncHelper {
     public static void main(String[] args) {
 
         AsyncHelper asyncHelper = new AsyncHelper();
-     //   System.out.println(new Random(100).nextInt());
+        //   System.out.println(new Random(100).nextInt());
         asyncHelper.start();
 
 
     }
 
     private void start() {
-        entities.add(entity1);entities.add(entity2);entities.add(entity3);
-        entities.add(entity4);entities.add(entity5);entities.add(entity6);
+        entities.add(entity1);
+        entities.add(entity2);
+        entities.add(entity3);
+        entities.add(entity4);
+        entities.add(entity5);
+        entities.add(entity6);
         long time = new Date().getTime();
         getObservableListOfEntity(entities);
-        long timer = new Date().getTime()-time;
+        long timer = new Date().getTime() - time;
         System.out.println(timer);
-
 
 
     }
 
     private void getObservableListOfEntity(List<Entity> entities) {
 
-             Observable<Entity> entityObservable = getEntityObservable().flatMap(entity->{
+        Observable<Entity> entityObservable = getEntityObservable().flatMap(entity -> {
 
-                 Observable<UserStat> userStatObservable = getUserStat(entity.getId());
-                Observable<EntityStat> entityStatObservable = getEntityStat(entity.getId());
-                Observable<Tags> tagsObservable = getTags(entity.getId());
-                Observable<Comments> commentsObservable = getComments(entity.getId());
-                Observable<User> userObservable = getUser(entity.getOwnerId());
-                Observable<String> stringObservable = getPoster(entity.getPicId());
-                 return Observable.zip(userStatObservable,entityStatObservable,tagsObservable,commentsObservable,userObservable,stringObservable,
-                        (a,b,c,d,e,f)->{
-                            entity.setUserStat(a);
-                            entity.setEntityStat(b);
-                            entity.setTags(c);
-                            entity.setComment(d);
-                            entity.setOwner(e);
-                            entity.setPicId(f);
-                            return new Entity(entity);
+            Observable<UserStat> userStatObservable = getUserStat(entity.getId());
+            Observable<EntityStat> entityStatObservable = getEntityStat(entity.getId());
+            Observable<Tags> tagsObservable = getTags(entity.getId());
+            Observable<Comments> commentsObservable = getComments(entity.getId());
+            Observable<User> userObservable = getUser(entity.getOwnerId());
+            Observable<String> stringObservable = getPoster(entity.getPicId());
+            return Observable.zip(userStatObservable, entityStatObservable, tagsObservable, commentsObservable, userObservable, stringObservable,
+                    (a, b, c, d, e, f) -> {
+                        entity.setUserStat(a);
+                        entity.setEntityStat(b);
+                        entity.setTags(c);
+                        entity.setComment(d);
+                        entity.setOwner(e);
+                        entity.setPicId(f);
+                        return new Entity(entity);
 
-                        });
+                    });
 
-            }).subscribeOn(Schedulers.io());
+        }).subscribeOn(Schedulers.io());
 
         List<Entity> entityList = entityObservable.toList().toBlocking().single();
 
@@ -191,7 +205,7 @@ public class AsyncHelper {
     }
 
 
-    private Observable<Entity> getEntityObservable(){
+    private Observable<Entity> getEntityObservable() {
         return Observable.from(entities).flatMap(entity -> Observable.create((Subscriber<? super Entity> a) -> {
             // simulate latency
             try {
@@ -205,12 +219,12 @@ public class AsyncHelper {
 
     }
 
-    public Observable<Integer> getRandomNumber(){
+    public Observable<Integer> getRandomNumber() {
         Random random = new Random(100);
         return Observable.just(random.nextInt()).subscribeOn(Schedulers.io());
     }
 
-    public Observable<Boolean> getRandomBoolean(){
+    public Observable<Boolean> getRandomBoolean() {
         Random random = new Random();
         return Observable.just(random.nextBoolean()).subscribeOn(Schedulers.io());
     }

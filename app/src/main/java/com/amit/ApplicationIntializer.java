@@ -1,11 +1,11 @@
 package com.amit;
 
-import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
-import javax.servlet.ServletContext;
-
+import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.DelegatingFilterProxy;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
+import javax.servlet.Filter;
 /**
  * Created by amit on 2/6/16.
  */
@@ -14,7 +14,7 @@ public class ApplicationIntializer extends AbstractAnnotationConfigDispatcherSer
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] { SpringConfig.class };
+        return new Class[] { SpringConfig.class ,SecurityConfig.class,SpringSocialSecurity.class};
     }
 
     @Override
@@ -25,6 +25,18 @@ public class ApplicationIntializer extends AbstractAnnotationConfigDispatcherSer
     @Override
     protected String[] getServletMappings() {
         return new String[] { "/","/itolearn","/itolearn/*"};
+    }
+
+
+    @Override
+    protected Filter[] getServletFilters() {
+        CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
+        encodingFilter.setEncoding("UTF-8");
+        encodingFilter.setForceEncoding(true);
+
+        DelegatingFilterProxy reconnectDelegate = new DelegatingFilterProxy("apiExceptionHandler");
+
+        return new Filter[] { reconnectDelegate, encodingFilter, new HiddenHttpMethodFilter() };
     }
 
 }

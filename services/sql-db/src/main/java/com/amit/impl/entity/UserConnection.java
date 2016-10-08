@@ -13,41 +13,41 @@ import javax.persistence.*;
 public class UserConnection {
 
     @Id
-    @GeneratedValue
-    private int id;
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
 
-    @Column()
+    @Column
     private String userId;
 
-    @Column()
+    @Column
     private String providerId;
 
-    @Column()
+    @Column
     private String providerUserId;
 
     @Column
     private int rank;
 
-    @Column()
+    @Column
     private String displayName;
 
-    @Column()
+    @Column
     private String profileUrl;
 
-    @Column()
+    @Column
     private String imageUrl;
 
-    @Column()
+    @Column
     private String accessToken;
 
-    @Column()
+    @Column
     private String secret;
 
-    @Column()
+    @Column
     private String refreshToken;
 
-    @Column()
+    @Column
     private long expireTime;
 
 
