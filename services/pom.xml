@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -9,11 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>sql-db</module>
-        <module>neo-db</module>
-        <module>couch-db</module>
-        <module>kafka-q</module>
-        <module>redis-q</module>
+
         <module>rx-java</module>
         <module>micro-bird-view</module>
         <module>webster</module>
@@ -26,11 +22,15 @@
         <module>reimann</module>
         <module>metrics</module>
         <module>owner</module>
-        <module>rabbit</module>
+
         <module>slack</module>
         <module>docker</module>
-        <module>google</module>
-        <module>tastekit</module>
+
+        <module>db</module>
+        <module>queque</module>
+        <module>api-aggregator</module>
+        <module>websockets</module>
+        <module>guava</module>
 
     </modules>
 </project>
