@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/services/algorithms/algorithms.iml" filepath="$PROJECT_DIR$/services/algorithms/algorithms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/api-aggregator/api-aggregator.iml" filepath="$PROJECT_DIR$/services/api-aggregator/api-aggregator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/byte-buddy/byte-buddy.iml" filepath="$PROJECT_DIR$/services/byte-buddy/byte-buddy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/db/couch/couch.iml" filepath="$PROJECT_DIR$/services/db/couch/couch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/couch-db/couch-db-impl/couch-db-impl.iml" filepath="$PROJECT_DIR$/services/couch-db/couch-db-impl/couch-db-impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/db/db.iml" filepath="$PROJECT_DIR$/services/db/db.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/docker/docker.iml" filepath="$PROJECT_DIR$/services/docker/docker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/db/elastic/elastic.iml" filepath="$PROJECT_DIR$/services/db/elastic/elastic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/guava/guava.iml" filepath="$PROJECT_DIR$/services/guava/guava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/hazelcast/hazelcast.iml" filepath="$PROJECT_DIR$/services/hazelcast/hazelcast.iml" />
+      <module fileurl="file://$PROJECT_DIR$/i_to_learn.iml" filepath="$PROJECT_DIR$/i_to_learn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/java/java.iml" filepath="$PROJECT_DIR$/services/java/java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/queque/kafka/kafka.iml" filepath="$PROJECT_DIR$/services/queque/kafka/kafka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/lambda/lambda.iml" filepath="$PROJECT_DIR$/services/lambda/lambda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/metrics/metrics.iml" filepath="$PROJECT_DIR$/services/metrics/metrics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/micro-bird-view/micro-bird-view-api/micro-beird-view-api.iml" filepath="$PROJECT_DIR$/services/micro-bird-view/micro-bird-view-api/micro-beird-view-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/micro-bird-view/micro-bird-view.iml" filepath="$PROJECT_DIR$/services/micro-bird-view/micro-bird-view.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/micro-bird-view/micro-bird-view-impl/micro-bird-view-impl.iml" filepath="$PROJECT_DIR$/services/micro-bird-view/micro-bird-view-impl/micro-bird-view-impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/db/mongo/mongo.iml" filepath="$PROJECT_DIR$/services/db/mongo/mongo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/nomin/nomin.iml" filepath="$PROJECT_DIR$/services/nomin/nomin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/owner/owner.iml" filepath="$PROJECT_DIR$/services/owner/owner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/queque/queque.iml" filepath="$PROJECT_DIR$/services/queque/queque.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/queque/rabbit/rabbit.iml" filepath="$PROJECT_DIR$/services/queque/rabbit/rabbit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/db/redis/redis.iml" filepath="$PROJECT_DIR$/services/db/redis/redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/reimann/reimann.iml" filepath="$PROJECT_DIR$/services/reimann/reimann.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/rx-java/rx-java.iml" filepath="$PROJECT_DIR$/services/rx-java/rx-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/services.iml" filepath="$PROJECT_DIR$/services/services.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/slack/slack.iml" filepath="$PROJECT_DIR$/services/slack/slack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/db/sql/sql.iml" filepath="$PROJECT_DIR$/services/db/sql/sql.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/websockets/websockets.iml" filepath="$PROJECT_DIR$/services/websockets/websockets.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/webster/webster.iml" filepath="$PROJECT_DIR$/services/webster/webster.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/webster/webster-api/webster-api.iml" filepath="$PROJECT_DIR$/services/webster/webster-api/webster-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/webster/webster-impl/webster-impl.iml" filepath="$PROJECT_DIR$/services/webster/webster-impl/webster-impl.iml" />
+    </modules>
+  </component>
+</project>

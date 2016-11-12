@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="algorithms" />
+        <module name="api-aggregator" />
+        <module name="app" />
+        <module name="byte-buddy" />
+        <module name="couch" />
+        <module name="couch-db-impl" />
+        <module name="docker" />
+        <module name="elastic" />
+        <module name="guava" />
+        <module name="java" />
+        <module name="kafka" />
+        <module name="lambda" />
+        <module name="metrics" />
+        <module name="micro-beird-view-api" />
+        <module name="micro-bird-view-impl" />
+        <module name="mongo" />
+        <module name="nomin" />
+        <module name="owner" />
+        <module name="rabbit" />
+        <module name="redis" />
+        <module name="reimann" />
+        <module name="rx-java" />
+        <module name="slack" />
+        <module name="sql" />
+        <module name="websockets" />
+        <module name="webster-impl" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="algorithms" target="1.5" />
+      <module name="api-aggregator" target="1.5" />
+      <module name="app" target="1.8" />
+      <module name="byte-buddy" target="1.5" />
+      <module name="couch" target="1.5" />
+      <module name="db" target="1.5" />
+      <module name="docker" target="1.5" />
+      <module name="elastic" target="1.5" />
+      <module name="guava" target="1.5" />
+      <module name="i_to_learn" target="1.5" />
+      <module name="java" target="1.5" />
+      <module name="kafka" target="1.5" />
+      <module name="lambda" target="1.5" />
+      <module name="metrics" target="1.5" />
+      <module name="micro-beird-view-api" target="1.5" />
+      <module name="micro-bird-view" target="1.5" />
+      <module name="micro-bird-view-impl" target="1.5" />
+      <module name="mongo" target="1.5" />
+      <module name="nomin" target="1.5" />
+      <module name="owner" target="1.5" />
+      <module name="queque" target="1.5" />
+      <module name="rabbit" target="1.5" />
+      <module name="redis" target="1.5" />
+      <module name="reimann" target="1.5" />
+      <module name="rx-java" target="1.8" />
+      <module name="services" target="1.5" />
+      <module name="slack" target="1.5" />
+      <module name="sql" target="1.5" />
+      <module name="websockets" target="1.5" />
+      <module name="webster" target="1.5" />
+      <module name="webster-api" target="1.8" />
+      <module name="webster-impl" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
